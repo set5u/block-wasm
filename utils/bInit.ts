@@ -1,5 +1,5 @@
 import * as Blockly from "blockly";
-export const types = ["i32", "i64", "f32", "f64", "string"];
+export const types = ["i32", "i64", "f32", "f64", "string", "null"];
 const val = (v: string, i: number) => [
   {
     type: `get${v}`,
@@ -57,18 +57,19 @@ Blockly.common.defineBlocksWithJsonArray([
       {
         type: "field_dropdown",
         name: "VALUE",
-        options: [
-          ["i32", "i32"],
-          ["i64", "i64"],
-          ["f32", "f32"],
-          ["f64", "f64"],
-          ["string", "string"],
-        ],
+        options: types.map((v) => [v, v]),
       },
     ],
     colour: "180",
     output: "type",
   },
+  {
+    type: "null",
+    message0: "null",
+    colour: "240",
+    output: "null",
+  },
+  ...val("null", 8),
   ...["i32", "i64", "f32", "f64"]
     .map((v, i) => [
       {
@@ -143,8 +144,8 @@ Blockly.common.defineBlocksWithJsonArray([
         type: "field_variable",
         name: "VALUE",
         variable: "val",
-        variableTypes: null,
-        defaultType: null,
+        variableTypes: types,
+        defaultType: types[0],
       },
     ],
     colour: "210",
@@ -154,20 +155,15 @@ Blockly.common.defineBlocksWithJsonArray([
   {
     type: "void",
     message0: "void",
-    colour: "210",
+    colour: "180",
     output: "void",
   },
-]);
-Blockly.Blocks["function_builder"] = {
-  init() {
-    this.jsonInit({
-      message0: "Arguments: %1",
-      args0: [{ type: "input_statement", name: "ARGS", check: "args" }],
-      message1: "Returns: %1",
-      args1: [
-        { type: "input_value", name: "RETURNS", check: ["void", "type"] },
-      ],
-      colour: 210,
-    });
+  {
+    type: "function_builder",
+    message0: "Arguments: %1",
+    args0: [{ type: "input_statement", name: "ARGS", check: "args" }],
+    message1: "Returns: %1",
+    args1: [{ type: "input_value", name: "RETURNS", check: ["void", "type"] }],
+    colour: 210,
   },
-};
+]);

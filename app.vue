@@ -128,6 +128,27 @@
           },
           {
             kind: "category",
+            name: "null",
+            colour: "240",
+            contents: [
+              {
+                kind: "button",
+                text: `Create variable of null`,
+                callbackKey: `createValnull`,
+              },
+              { kind: "block", type: `getnull` },
+              {
+                kind: "block",
+                type: `setnull`,
+                inputs: {
+                  VALUE: { shadow: { type: "null" } },
+                },
+              },
+              { kind: "block", type: "null" },
+            ],
+          },
+          {
+            kind: "category",
             name: "type",
             colour: "180",
             contents: types.map((v) => ({
