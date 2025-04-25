@@ -22,6 +22,8 @@
 
   import "~/utils/bInit";
   import { types } from "~/utils/bInit";
+  Blockly.utils.colour.setHsvSaturation(0.6);
+  Blockly.utils.colour.setHsvValue(0.7);
   const blocks = ref<HTMLDivElement>();
   const src = ref(`export function main(): void {
         print("HelloWorld")
@@ -56,13 +58,22 @@
       return;
     }
     const workspace = Blockly.inject(blocks.value, {
+      // renderer: "zelos",
       toolbox: {
         kind: "categoryToolbox",
         contents: [
           {
             kind: "category",
             name: "system",
-            contents: [{ kind: "block", type: "print" }],
+            contents: [
+              {
+                kind: "block",
+                type: "print",
+                inputs: {
+                  VALUE: { shadow: { type: "string" } },
+                },
+              },
+            ],
           },
           ...["i32", "i64", "f32", "f64"].map((v, i) => ({
             kind: "category",

@@ -8,7 +8,7 @@ const val = (v: string, i: number) => [
       {
         type: "field_variable",
         name: "VAR",
-        variable: "%{BKY_VARIABLES_DEFAULT_NAME}",
+        variable: "val",
         variableTypes: [v],
         defaultType: v,
       },
@@ -23,7 +23,7 @@ const val = (v: string, i: number) => [
       {
         type: "field_variable",
         name: "VAR",
-        variable: "%{BKY_VARIABLES_DEFAULT_NAME}",
+        variable: "val",
         variableTypes: [v],
         defaultType: v,
       },
@@ -31,7 +31,6 @@ const val = (v: string, i: number) => [
     ],
     colour: `${i * 30}`,
     output: v,
-    inputsInline: true,
     nextStatement: null,
     previousStatement: null,
   },
@@ -40,7 +39,7 @@ Blockly.common.defineBlocksWithJsonArray([
   {
     type: "print",
     message0: "print %1",
-    args0: [{ type: "input_value", name: "VALUE", value: "" }],
+    args0: [{ type: "input_value", name: "VALUE", check: "string" }],
     nextStatement: null,
     previousStatement: null,
   },
