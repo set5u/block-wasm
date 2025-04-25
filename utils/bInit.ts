@@ -31,8 +31,8 @@ const val = (v: string, i: number) => [
     ],
     colour: `${i * 30}`,
     output: v,
-    nextStatement: null,
-    previousStatement: null,
+    nextStatement: "process",
+    previousStatement: "process",
   },
 ];
 Blockly.common.defineBlocksWithJsonArray([
@@ -40,8 +40,8 @@ Blockly.common.defineBlocksWithJsonArray([
     type: "print",
     message0: "print %1",
     args0: [{ type: "input_value", name: "VALUE", check: "string" }],
-    nextStatement: null,
-    previousStatement: null,
+    nextStatement: "process",
+    previousStatement: "process",
   },
   {
     type: "string",
