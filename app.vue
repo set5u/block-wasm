@@ -136,6 +136,21 @@
               fields: { VALUE: v },
             })),
           },
+          {
+            kind: "category",
+            name: "function",
+            colour: "210",
+            contents: [
+              {
+                kind: "block",
+                type: "function_builder",
+                inputs: {
+                  RETURNS: { shadow: { type: "void" } },
+                },
+              },
+              { kind: "block", type: "args" },
+            ],
+          },
         ],
       },
     });

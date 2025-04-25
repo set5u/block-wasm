@@ -30,7 +30,6 @@ const val = (v: string, i: number) => [
       { type: "input_value", name: "VALUE", check: v },
     ],
     colour: `${i * 30}`,
-    output: v,
     nextStatement: "process",
     previousStatement: "process",
   },
@@ -120,4 +119,55 @@ Blockly.common.defineBlocksWithJsonArray([
       },
     ])
     .flat(2),
+  {
+    type: "args",
+    message0: "Argument: %1",
+    args0: [
+      {
+        type: "field_variable",
+        name: "VAR",
+        variable: "val",
+        variableTypes: null,
+        defaultType: null,
+      },
+    ],
+    colour: "210",
+    previousStatement: "args",
+    nextStatement: "args",
+  },
+  {
+    type: "args",
+    message0: "%1",
+    args0: [
+      {
+        type: "field_variable",
+        name: "VALUE",
+        variable: "val",
+        variableTypes: null,
+        defaultType: null,
+      },
+    ],
+    colour: "210",
+    previousStatement: "args",
+    nextStatement: "args",
+  },
+  {
+    type: "void",
+    message0: "void",
+    colour: "210",
+    output: "void",
+  },
 ]);
+Blockly.Blocks["function_builder"] = {
+  init() {
+    this.jsonInit({
+      message0: "Arguments: %1",
+      args0: [{ type: "input_statement", name: "ARGS", check: "args" }],
+      message1: "Returns: %1",
+      args1: [
+        { type: "input_value", name: "RETURNS", check: ["void", "type"] },
+      ],
+      colour: 210,
+    });
+  },
+};
