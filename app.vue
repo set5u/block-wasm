@@ -21,6 +21,7 @@
   import * as Blockly from "blockly";
 
   import "~/utils/bInit";
+  import { types } from "~/utils/bInit";
   const blocks = ref<HTMLDivElement>();
   const src = ref(`export function main(): void {
         print("HelloWorld")
@@ -82,7 +83,7 @@
                 },
               },
               { kind: "block", type: v },
-              ...["+", "-", "*", "/"].map((m) => ({
+              ...["+", "-", "*", "/", "^", "%"].map((m) => ({
                 kind: "block",
                 type: `2${v}`,
                 fields: { OP: m },
@@ -114,10 +115,20 @@
               { kind: "block", type: "string" },
             ],
           },
+          {
+            kind: "category",
+            name: "type",
+            colour: "180",
+            contents: types.map((v) => ({
+              kind: "block",
+              type: "type",
+              fields: { VALUE: v },
+            })),
+          },
         ],
       },
     });
-    ["i32", "i64", "f32", "f64", "string"].forEach((v) =>
+    types.forEach((v) =>
       workspace.registerButtonCallback(`createVal${v}`, (button) => {
         Blockly.Variables.createVariableButtonHandler(
           button.getTargetWorkspace(),

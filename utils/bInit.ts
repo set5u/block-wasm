@@ -1,5 +1,5 @@
 import * as Blockly from "blockly";
-
+export const types = ["i32", "i64", "f32", "f64", "string"];
 const val = (v: string, i: number) => [
   {
     type: `get${v}`,
@@ -52,6 +52,25 @@ Blockly.common.defineBlocksWithJsonArray([
     output: "string",
   },
   ...val("string", 5),
+  {
+    type: "type",
+    message0: "%1",
+    args0: [
+      {
+        type: "field_dropdown",
+        name: "VALUE",
+        options: [
+          ["i32", "i32"],
+          ["i64", "i64"],
+          ["f32", "f32"],
+          ["f64", "f64"],
+          ["string", "string"],
+        ],
+      },
+    ],
+    colour: "180",
+    output: "type",
+  },
   ...["i32", "i64", "f32", "f64"]
     .map((v, i) => [
       {
@@ -92,6 +111,8 @@ Blockly.common.defineBlocksWithJsonArray([
               ["-", "-"],
               ["*", "*"],
               ["/", "/"],
+              ["^", "^"],
+              ["%", "%"],
             ],
           },
         ],

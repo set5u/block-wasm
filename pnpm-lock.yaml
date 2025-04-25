@@ -16,9 +16,6 @@ dependencies:
     version: 4.5.0(vue@3.5.13)
 
 devDependencies:
-  '@blockly/block-shareable-procedures':
-    specifier: ^5.0.12
-    version: 5.0.12(blockly@11.2.2)
   assemblyscript:
     specifier: ^0.27.36
     version: 0.27.36
@@ -306,15 +303,6 @@ packages:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
     dev: false
-
-  /@blockly/block-shareable-procedures@5.0.12(blockly@11.2.2):
-    resolution: {integrity: sha512-8MKbf18IisSpcs2nWPMa9pOIhAhDJB3SY0i3wUEMpYiJzF3dyYcrLWh/MVadKye1I/65pvk/zal8gPo4Ys6TvQ==}
-    engines: {node: '>=8.17.0'}
-    peerDependencies:
-      blockly: ^11.0.0
-    dependencies:
-      blockly: 11.2.2
-    dev: true
 
   /@cloudflare/kv-asset-handler@0.4.0:
     resolution: {integrity: sha512-+tv3z+SPp+gqTIcImN9o0hqE9xyfQjI1XD9pL6NuKjua9B1y7mNYv0S9cP+QEbA4ppVgGZEmKOvHX5G5Ei1CVA==}
